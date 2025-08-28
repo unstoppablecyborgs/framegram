@@ -29,6 +29,9 @@
     "eslint-plugin-react-hooks-extra": "^1.52.6",
     "prettier": "^3.6.2",
     "sass": "^1.91.0",
+    "stylelint": "^16.23.1",
+    "stylelint-config-clean-order": "^7.0.0",
+    "stylelint-config-standard-scss": "^15.0.1",
     "typescript": "^5"
   }
 }
