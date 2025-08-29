@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
+    "build:production": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
     "prepare": "husky install"
