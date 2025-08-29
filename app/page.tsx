@@ -1,7 +1,1 @@
-export default function DefaultPage() {
-    return (
-        <div>
-            DefaultPage
-        </div>
-    );
-}
+export { HomePage as default } from '@/pages/home'
