@@ -6,9 +6,12 @@
 }
 
 /* Убираем внутренние отступы */
+
+/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class */
 ul[class],
 ol[class] {
   padding: 0;
+  list-style: none;
 }
 
 /* Убираем внешние отступы */
@@ -27,20 +30,15 @@ blockquote,
 dl,
 dd {
   margin: 0;
+  padding: 0;
 }
 
 /* Выставляем основные настройки по-умолчанию для body */
 body {
-  min-height: 100vh;
   scroll-behavior: smooth;
-  text-rendering: optimizeSpeed;
+  min-height: 100vh;
   line-height: 1.5;
-}
-
-/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
-ul[class],
-ol[class] {
-  list-style: none;
+  text-rendering: optimizespeed;
 }
 
 /* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
@@ -50,11 +48,11 @@ a:not([class]) {
 
 /* Упрощаем работу с изображениями */
 img {
-  max-width: 100%;
   display: block;
+  max-width: 100%;
 }
 
-/* Указываем понятную периодичность в потоке данных у article*/
+/* Указываем понятную периодичность в потоке данных у article */
 article > * + * {
   margin-top: 1em;
 }
@@ -70,9 +68,9 @@ select {
 /* Удаляем все анимации и переходы для людей, которые предпочитай их не использовать */
 @media (prefers-reduced-motion: reduce) {
   * {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }

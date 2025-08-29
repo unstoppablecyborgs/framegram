@@ -1,4 +1,4 @@
-@import 'reset';
-@import 'colors';
-@import 'sizes';
-@import 'typography';
+@use './reset';
+@use './colors';
+@use './typography';
+@use './sizes';
