@@ -1,3 +1,73 @@
-.checkIcon {
-  fill: var(--color-dark-900);
+.root {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--color-light-500);
+  border-radius: 2px;
+
+  color: var(--color-dark-900);
+
+  background-color: transparent;
+  outline: none;
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    z-index: -1;
+
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+
+    opacity: 0;
+    background-color: var(--color-dark-300);
+
+    transition: opacity 0.2s ease;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    border-color: var(--color-light-900);
+  }
+
+  &[data-state='checked'] {
+    border-color: var(--color-light-100);
+    background-color: var(--color-light-100);
+  }
+
+  &:disabled[data-state='checked'] {
+    border-color: var(--color-dark-100);
+    color: var(--color-light-700);
+    background-color: var(--color-dark-100);
+  }
+
+  &:hover:not(:disabled) {
+    cursor: pointer;
+  }
+
+  &:focus-visible::before {
+    opacity: 1;
+    background-color: var(--color-dark-500);
+  }
+
+  &:active:not(:disabled)::before {
+    opacity: 1;
+    background-color: var(--color-dark-100);
+  }
+
+  &:hover:not(:disabled)::before {
+    opacity: 1;
+  }
+}
+
+.indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
