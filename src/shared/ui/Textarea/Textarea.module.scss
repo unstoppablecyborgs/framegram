@@ -13,4 +13,8 @@
   &::placeholder {
     color: var(--color-light-900);
   }
+
+  &:focus-visible {
+    border-color: var(--color-primary-700);
+  }
 }
