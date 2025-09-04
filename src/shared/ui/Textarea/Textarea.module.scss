@@ -26,7 +26,13 @@
 
   &:focus-visible {
     border: 2px solid var(--color-primary-700);
+  }
 
-    // border-color: var(--color-primary-700);
+  &:active:not(:disabled) {
+    border-color: var(--color-light-100);
+  }
+
+  &[aria-invalid='true'] {
+    border-color: var(--color-danger-500);
   }
 }
