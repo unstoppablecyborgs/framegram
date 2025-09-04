@@ -1,0 +1,16 @@
+.textarea {
+  width: 100%;
+  min-height: 84px;
+  padding: 6px 12px;
+  border: 1px solid var(--color-dark-100);
+  border-radius: 2px;
+
+  color: inherit;
+
+  background-color: var(--color-dark-500);
+  outline: none;
+
+  &::placeholder {
+    color: var(--color-light-900);
+  }
+}
