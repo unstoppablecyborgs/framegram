@@ -10,6 +10,8 @@
   background-color: var(--color-dark-500);
   outline: none;
 
+  transition: border 0.2s ease;
+
   &::placeholder {
     color: var(--color-light-900);
   }
@@ -23,6 +25,8 @@
   }
 
   &:focus-visible {
-    border-color: var(--color-primary-700);
+    border: 2px solid var(--color-primary-700);
+
+    // border-color: var(--color-primary-700);
   }
 }
