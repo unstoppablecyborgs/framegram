@@ -2,3 +2,8 @@
 @use './colors';
 @use './typography';
 @use './sizes';
+
+body {
+  color: var(--color-light-500);
+  background-color: var(--color-dark-700);
+}
