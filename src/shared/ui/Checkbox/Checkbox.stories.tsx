@@ -12,6 +12,15 @@ const meta = {
       },
     },
   },
+  args: {
+    disabled: false,
+    defaultChecked: false,
+  },
+  argTypes: {
+    asChild: {
+      table: { disable: true },
+    },
+  },
 } satisfies Meta<typeof Checkbox>
 
 export default meta
