@@ -12,7 +12,7 @@ const config: StorybookConfig = {
     name: '@storybook/nextjs-vite',
     options: {},
   },
-  staticDirs: ['..\\public'],
+  staticDirs: ['../public'],
   typescript: {
     reactDocgen: 'react-docgen-typescript',
   },

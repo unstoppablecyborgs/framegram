@@ -5,7 +5,7 @@ declare module '*.svg' {
 }
 
 declare module '*.svg?url' {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // biome-ignore lint/suspicious/noExplicitAny: SVG URL modules require any type for proper typing(https://react-svgr.com/docs/next/#typescript)
   const content: any
   export default content
 }
