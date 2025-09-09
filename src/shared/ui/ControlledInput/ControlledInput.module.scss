@@ -1,0 +1,186 @@
+.root {
+  width: 260px;
+}
+
+.field {
+  display: grid;
+  margin-bottom: 10px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.71429;
+  color: var(--color-light-900);
+
+  &.error {
+    color: var(--color-danger-500);
+  }
+  &.disabled {
+    color: var(--color-dark-100);
+  }
+}
+
+.errorMessage {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.71429;
+  color: var(--color-danger-500);
+
+  &.error {
+    color: var(--color-danger-500);
+  }
+}
+
+.input,
+.textarea {
+  all: unset;
+  box-sizing: border-box;
+
+  width: 100%;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  border-radius: 2px;
+  color: var(--color-light-900);
+  box-shadow: 0 0 0 1px var(--color-dark-100);
+
+
+  &:hover {
+    box-shadow: 0 0 0 1px var(--color-light-900);
+  }
+
+  &.error {
+    color: var(--color-light-100);
+    box-shadow: 0 0 0 1px var(--color-danger-500);
+    &:hover {
+    }
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 2px var(--color-primary-500);
+  }
+
+  &:active{
+    box-shadow: 0 0 0 1px var(--color-light-100);
+    background-color: var(--color-dark-500);
+    color: var(--color-light-100);
+    &::placeholder {
+      color: transparent;
+    }
+  }
+
+  &.disabled {
+    color: var(--color-dark-100);
+    box-shadow: 0 0 0 1px var(--color-dark-100);
+    cursor: not-allowed;
+    &::placeholder {
+      color: var(--color-dark-100);
+    }
+    &:hover {
+    }
+  }
+
+  &::selection {
+    background-color: var(--color-dark-500);
+    color: var(--color-light-100);
+  }
+  &::placeholder {
+    color: var(--color-light-900);
+  }
+
+  &.searchButton {
+    padding-left: 40px;
+  }
+}
+
+.input {
+  padding: 0 10px;
+  height: 35px;
+  line-height: 1;
+}
+
+.divContainer {
+  position: relative;
+  display: flex;
+}
+
+.iconButton {
+  cursor: pointer;
+  color: var(--color-light-100);
+
+  position: absolute;
+  transform: translateY(-50%);
+
+  width: 34px;
+  height: 34px;
+  margin-right: 12px;
+  padding: 0;
+
+  background: transparent;
+  border: 0;
+  outline: 0;
+
+  &.searchButton{
+    top: 21px;
+    left: 4px;
+    bottom: 50%;
+    svg {
+      height: 20px;
+      width: 20px;
+    }
+  }
+  &.eyeButton{
+    top: 21px;
+    right: 0;
+    bottom: 50%;
+    svg {
+      height: 24px;
+      width: 24px;
+    }
+  }
+
+  &.disabled {
+    color: var(--color-dark-100);
+    box-shadow: 0 0 0 1px var(--color-dark-100);
+    cursor: not-allowed;
+  }
+
+  &:focus-visible {
+    outline: var(--color-primary-500);
+  }
+}
+
+.icon {
+  &.disabled {
+    color: var(--color-dark-100);
+  }
+}
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--color-light-900); //цвет текста
+  transition: background 5000s ease-in-out 0s; //костыль
+  background: transparent; //костыль №2
+  border-color: var(--color-light-900);
+  caret-color: var(--color-light-900);
+
+} //отвратительный костыль для автофилла
+
+
+/* чистит ‘X’ для Internet Explorer */
+input[type=search]::-ms-clear { display: none; width : 0; height: 0; }
+input[type=search]::-ms-reveal { display: none; width : 0; height: 0; }
+/* чистит ‘X’ для Chrome и браузеров на основе Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }

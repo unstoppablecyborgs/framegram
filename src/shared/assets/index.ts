@@ -1,1 +1,4 @@
 export { default as CheckIcon } from './svg/outline/checkmark-outline.svg'
+export { default as EyeClosedIcon } from './svg/outline/eye-off-outline.svg'
+export { default as EyeOpenIcon } from './svg/outline/eye-outline.svg'
+export { default as MagnifyingGlassIcon } from './svg/outline/search.svg'
