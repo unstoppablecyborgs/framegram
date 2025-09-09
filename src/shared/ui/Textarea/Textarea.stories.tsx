@@ -50,7 +50,6 @@ export const WithLabel: Story = {
 
 export const WithError: Story = {
   render: () => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [isError, setIsError] = useState(true)
 
     return (
