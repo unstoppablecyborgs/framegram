@@ -98,9 +98,7 @@ export const Sidebar = () => {
       <div className={clsx(s.block, s.block2)}>
         {middleLinks.map(el => {
           return (
-            <SidebarLink key={el.id} label={el.label} href={el.href} iconActive={el.iconActive} iconDefault={el.iconDefault}/>
-
-            
+            <SidebarLink key={el.id} label={el.label} href={el.href} iconActive={el.iconActive} iconDefault={el.iconDefault}/> 
           )
         })}
       </div>
