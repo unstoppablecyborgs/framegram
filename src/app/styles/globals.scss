@@ -4,6 +4,7 @@
 @use './sizes';
 
 body {
+  font-family: Inter, system-ui, sans-serif;
   color: var(--color-light-100);
   background-color: var(--color-dark-700);
 }
