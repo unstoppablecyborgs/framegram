@@ -1,23 +1,19 @@
 .button {
   cursor: pointer;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  width: 182px;
-  height: 36px;
+  gap: 10px;
   padding: 6px 24px;
   border: 1px solid transparent;
   border-radius: 2px;
-
-  font-family: inherit;
-  font-size: var(--font-size-m);
-  font-weight: var(--font-weight-semi-bold);
-  line-height: var(--line-height-m);
+  font-weight: 600;
   text-align: center;
+  color: var(--color-light-100);
 
   outline: none;
+
+  transition: border 0.2s ease, background-color 0.3s ease;
 
   &:focus {
     border: 2px solid var(--color-primary-700);
@@ -29,7 +25,6 @@
 }
 
 .primary {
-  color: var(--color-light-100);
   background-color: var(--color-primary-500);
 
   &:active {
@@ -48,7 +43,6 @@
 }
 
 .secondary {
-  color: var(--color-light-100);
   background-color: var(--color-dark-300);
 
   &:active {
@@ -95,7 +89,6 @@
 }
 
 .textButton {
-  width: 100px;
   border: none;
   color: var(--color-primary-500);
   background-color: transparent;
@@ -114,5 +107,5 @@
 }
 
 .fullWidth {
-  width: 100% !important;
+  width: 100%;
 }

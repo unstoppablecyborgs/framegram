@@ -10,7 +10,7 @@ const meta = {
 } satisfies Meta<typeof Button>
 export default meta
 
-type Story = StoryObj<typeof Button>
+type Story = StoryObj<typeof meta>
 
 /** Primary variant. Used as 'default'*/
 export const Primary: Story = {
@@ -56,7 +56,7 @@ export const Disabled: Story = {
 /** Link as Button variant*/
 export const LinkAsButon: Story = {
   render: () => (
-    <Button asChild>
+    <Button asChild={true}>
       <Link href={'/'} style={{ textDecoration: 'none' }}>
         Link As Button
       </Link>

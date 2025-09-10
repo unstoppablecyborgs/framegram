@@ -1,7 +1,6 @@
 'use client'
 
 import { Slot } from '@radix-ui/react-slot'
-import { Button as RadixButton } from '@radix-ui/themes'
 import clsx from 'clsx'
 import * as React from 'react'
 
@@ -9,14 +8,14 @@ import s from './Button.module.scss'
 
 type ButtonVariant = 'primary' | 'secondary' | 'outlined' | 'textButton'
 
-type ButtonProps = {
+type Props = {
   /** Render the Button using any element if asChild true */
   asChild?: boolean
   /** Choose from 4 style variants. Default: "primary". */
   variant?: ButtonVariant
   /** Stretches button to full parent width if fullWidth true*/
   fullWidth?: boolean
-} & Omit<React.ComponentProps<'button'>, 'color' | 'size' | 'radius'>
+} & React.ComponentProps<'button'>
 
 /** Ui kit Button component */
 export const Button = ({
@@ -24,18 +23,13 @@ export const Button = ({
   variant = 'primary',
   fullWidth = false,
   className,
-  children,
   ...rest
-}: ButtonProps) => {
-  const Component = asChild ? Slot : RadixButton
+}: Props) => {
+  const Component = asChild ? Slot : 'button'
 
   const classNames = {
     root: clsx(s.button, s[variant], fullWidth && s.fullWidth, className),
   }
 
-  return (
-    <Component className={classNames.root} {...rest}>
-      {children}
-    </Component>
-  )
+  return <Component className={classNames.root} {...rest}></Component>
 }
