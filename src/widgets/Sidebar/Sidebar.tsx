@@ -99,6 +99,8 @@ export const Sidebar = () => {
         {middleLinks.map(el => {
           return (
             <SidebarLink key={el.id} label={el.label} href={el.href} iconActive={el.iconActive} iconDefault={el.iconDefault}/> 
+
+            
           )
         })}
       </div>
