@@ -1,0 +1,37 @@
+.alert {
+  position: relative;
+
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: flex-start;
+
+  min-width: 386px;
+  max-width: fit-content;
+  min-height: 48px;
+  padding: 12px 24px;
+  border-radius: 4px;
+
+  color: var(--color-light-100);
+}
+
+.alertError {
+  border: 1px solid var(--color-danger-500);
+  background-color: var(--color-danger-900);
+}
+
+.alertSucceeded {
+  border: 1px solid var(--color-success-500);
+  background-color: var(--color-success-900);
+}
+
+.alertMessage {
+  min-width: 80px;
+}
+
+.close {
+  position: absolute;
+  top: 12px;
+  right: 24px;
+  bottom: 12px;
+}
