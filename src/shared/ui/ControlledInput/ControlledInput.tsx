@@ -1,12 +1,20 @@
 'use client'
 import clsx from 'clsx'
-import { Form } from 'radix-ui'
 import * as React from 'react'
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, ComponentProps, useState } from 'react'
 
 import { EyeClosedIcon, EyeOpenIcon, MagnifyingGlassIcon } from '@/shared/assets'
 
 import styles from './ControlledInput.module.scss'
+
+type Props = ComponentProps<'div'> & {
+  errorMessage?: string
+  label?: string
+  disabled?: boolean
+  onValueChange?: (value: string) => void
+  placeholder?: string
+  type: string
+}
 
 function ControlledInput({
   errorMessage,
@@ -17,7 +25,7 @@ function ControlledInput({
   type,
   ref,
   ...props
-}: React.ComponentProps<typeof Form.Root>) {
+}: Props) {
   const [showPassword, setShowPassword] = useState(false)
 
   const endTypeCalc = (elementType: string, passwordVisible: boolean) => {
@@ -49,51 +57,44 @@ function ControlledInput({
   }
 
   return (
-    <Form.Root className={classNames.root}>
-      <Form.Field className={clsx(styles.field)} name="email">
-        <Form.Label className={classNames.label}>{label}</Form.Label>
-        <div className={clsx(styles.divContainer)}>
-          <Form.Control asChild={true}>
-            <input
-              onChange={() => handleChange}
-              className={classNames.input}
-              type={endType}
-              placeholder={placeholder}
-              disabled={disabled}
-              ref={ref}
-              {...props}
-            />
-          </Form.Control>
-          {type === 'password' && (
-            <button
-              type={'button'}
-              onClick={() => setShowPassword(!showPassword)}
-              className={classNames.iconButton}
-              disabled={disabled}
-            >
-              {showPassword ? (
-                <EyeOpenIcon className={classNames.icon} />
-              ) : (
-                <EyeClosedIcon className={classNames.icon} />
-              )}
-            </button>
-          )}
-          {type === 'search' && (
-            <button
-              type={'button'}
-              onClick={() => {}}
-              className={classNames.iconButton}
-              disabled={disabled}
-            >
-              <MagnifyingGlassIcon className={classNames.icon} />
-            </button>
-          )}
-        </div>
-        {!!errorMessage && (
-          <Form.FormMessage className={classNames.message}>{errorMessage}</Form.FormMessage>
+    <div className={classNames.root}>
+      <label className={classNames.label}>{label}</label>
+      <div className={clsx(styles.divContainer)}>
+        <input
+          onChange={() => handleChange}
+          className={classNames.input}
+          type={endType}
+          placeholder={placeholder}
+          disabled={disabled}
+          {...props}
+        />
+        {type === 'password' && (
+          <button
+            type={'button'}
+            onClick={() => setShowPassword(!showPassword)}
+            className={classNames.iconButton}
+            disabled={disabled}
+          >
+            {showPassword ? (
+              <EyeOpenIcon className={classNames.icon} />
+            ) : (
+              <EyeClosedIcon className={classNames.icon} />
+            )}
+          </button>
         )}
-      </Form.Field>
-    </Form.Root>
+        {type === 'search' && (
+          <button
+            type={'button'}
+            onClick={() => {}}
+            className={classNames.iconButton}
+            disabled={disabled}
+          >
+            <MagnifyingGlassIcon className={classNames.icon} />
+          </button>
+        )}
+      </div>
+      {!!errorMessage && <span className={classNames.message}>{errorMessage}</span>}
+    </div>
   )
 }
 

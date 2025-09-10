@@ -2,11 +2,6 @@
   width: 260px;
 }
 
-.field {
-  display: grid;
-  margin-bottom: 10px;
-}
-
 .label {
   font-size: 14px;
   font-weight: 400;
@@ -26,14 +21,9 @@
   font-size: 14px;
   line-height: 1.71429;
   color: var(--color-danger-500);
-
-  &.error {
-    color: var(--color-danger-500);
-  }
 }
 
-.input,
-.textarea {
+.input {
   all: unset;
   box-sizing: border-box;
 
@@ -43,13 +33,14 @@
   align-items: center;
   justify-content: center;
 
+  padding: 8px 10px;
+  line-height: 1;
+
   font-size: 16px;
   font-weight: 400;
-  line-height: 1.5;
   border-radius: 2px;
   color: var(--color-light-900);
   box-shadow: 0 0 0 1px var(--color-dark-100);
-
 
   &:hover {
     box-shadow: 0 0 0 1px var(--color-light-900);
@@ -97,12 +88,6 @@
   &.searchButton {
     padding-left: 40px;
   }
-}
-
-.input {
-  padding: 0 10px;
-  height: 35px;
-  line-height: 1;
 }
 
 .divContainer {
