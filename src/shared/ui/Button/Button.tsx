@@ -27,9 +27,7 @@ export const Button = ({
 }: Props) => {
   const Component = asChild ? Slot : 'button'
 
-  const classNames = {
-    root: clsx(s.button, s[variant], fullWidth && s.fullWidth, className),
-  }
+  const classNames = clsx(s.button, s[variant], fullWidth && s.fullWidth, className)
 
-  return <Component className={classNames.root} {...rest}></Component>
+  return <Component className={classNames} {...rest} />
 }
