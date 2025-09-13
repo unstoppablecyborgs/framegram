@@ -7,7 +7,7 @@ import { EyeClosedIcon, EyeOpenIcon, MagnifyingGlassIcon } from '@/shared/assets
 
 import styles from './ControlledInput.module.scss'
 
-type Props = ComponentProps<'div'> & {
+type Props = ComponentProps<'input'> & {
   errorMessage?: string
   label?: string
   disabled?: boolean
@@ -22,6 +22,7 @@ function ControlledInput({
   disabled,
   onValueChange,
   placeholder,
+  onChange,
   type,
   ref,
   ...props
@@ -35,10 +36,14 @@ function ControlledInput({
     return elementType
   }
 
+  const showPasswordToggle = type === 'password'
+  const showSearchIcon = type === 'search'
+
   const endType = endTypeCalc(type, showPassword)
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
     onValueChange?.(e.target.value)
+    onChange?.(e)
   }
 
   const classNames = {
@@ -46,19 +51,18 @@ function ControlledInput({
       styles.input,
       !!errorMessage && styles.error,
       disabled && styles.disabled,
-      type === 'search' && styles.searchButton,
       type === 'search' && styles.search
     ),
     label: clsx(styles.label, !!errorMessage && styles.error, disabled && styles.disabled),
     icon: clsx(styles.icon, !!errorMessage && styles.error, disabled && styles.disabled),
     root: clsx(styles.root, !!errorMessage && styles.error, disabled && styles.disabled),
     message: clsx(styles.errorMessage, !!errorMessage && styles.error),
-    iconButton: clsx(styles.iconButton, type === 'search' ? styles.searchButton : styles.eyeButton),
+    iconButton: clsx(styles.iconButton, type === 'search' ? styles.search : styles.eyeButton),
   }
 
   return (
     <div className={classNames.root}>
-      <label className={classNames.label}>{label}</label>
+      {label && <label className={classNames.label}>{label}</label>}
       <div className={clsx(styles.divContainer)}>
         <input
           onChange={() => handleChange}
@@ -68,7 +72,7 @@ function ControlledInput({
           disabled={disabled}
           {...props}
         />
-        {type === 'password' && (
+        {showPasswordToggle && (
           <button
             type={'button'}
             onClick={() => setShowPassword(!showPassword)}
@@ -82,16 +86,7 @@ function ControlledInput({
             )}
           </button>
         )}
-        {type === 'search' && (
-          <button
-            type={'button'}
-            onClick={() => {}}
-            className={classNames.iconButton}
-            disabled={disabled}
-          >
-            <MagnifyingGlassIcon className={classNames.icon} />
-          </button>
-        )}
+        {showSearchIcon && <MagnifyingGlassIcon className={classNames.iconButton} />}
       </div>
       {!!errorMessage && <span className={classNames.message}>{errorMessage}</span>}
     </div>

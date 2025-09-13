@@ -1,5 +1,6 @@
 .root {
   width: 260px;
+  margin: 50px 120px;
 }
 
 .label {
@@ -11,6 +12,7 @@
   &.error {
     color: var(--color-danger-500);
   }
+
   &.disabled {
     color: var(--color-dark-100);
   }
@@ -28,29 +30,22 @@
   box-sizing: border-box;
 
   width: 100%;
+  padding: 8px 10px;
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  padding: 8px 10px;
-  line-height: 1;
-
   font-size: 16px;
   font-weight: 400;
+  line-height: 1;
+
   border-radius: 2px;
   color: var(--color-light-900);
   box-shadow: 0 0 0 1px var(--color-dark-100);
 
   &:hover {
     box-shadow: 0 0 0 1px var(--color-light-900);
-  }
-
-  &.error {
-    color: var(--color-light-100);
-    box-shadow: 0 0 0 1px var(--color-danger-500);
-    &:hover {
-    }
   }
 
   &:focus-visible {
@@ -61,32 +56,38 @@
     box-shadow: 0 0 0 1px var(--color-light-100);
     background-color: var(--color-dark-500);
     color: var(--color-light-100);
+
     &::placeholder {
       color: transparent;
     }
+  }
+
+  &.error {
+    color: var(--color-light-100);
+    box-shadow: 0 0 0 1px var(--color-danger-500);
   }
 
   &.disabled {
     color: var(--color-dark-100);
     box-shadow: 0 0 0 1px var(--color-dark-100);
     cursor: not-allowed;
+
     &::placeholder {
       color: var(--color-dark-100);
     }
-    &:hover {
-    }
+  }
+
+  &.search {
+    padding-left: 40px;
+  }
+
+  &::placeholder {
+    color: var(--color-light-900);
   }
 
   &::selection {
     background-color: var(--color-dark-500);
     color: var(--color-light-100);
-  }
-  &::placeholder {
-    color: var(--color-light-900);
-  }
-
-  &.searchButton {
-    padding-left: 40px;
   }
 }
 
@@ -111,23 +112,8 @@
   border: 0;
   outline: 0;
 
-  &.searchButton{
-    top: 21px;
-    left: 4px;
-    bottom: 50%;
-    svg {
-      height: 20px;
-      width: 20px;
-    }
-  }
-  &.eyeButton{
-    top: 21px;
-    right: 0;
-    bottom: 50%;
-    svg {
-      height: 24px;
-      width: 24px;
-    }
+  &:focus-visible {
+    outline: var(--color-primary-500);
   }
 
   &.disabled {
@@ -136,18 +122,30 @@
     cursor: not-allowed;
   }
 
-  &:focus-visible {
-    outline: var(--color-primary-500);
+  &.search{
+    top: 18px;
+    left: 0;
+    bottom: 50%;
+
+    height: 20px;
+    width: 20px;
+    margin: 0 9px 0 12px;
+  }
+
+  &.eyeButton{
+    top: 21px;
+    right: 0;
+    bottom: 50%;
+
+    svg {
+      height: 24px;
+      width: 24px;
+    }
   }
 }
 
-.icon {
-  &.disabled {
-    color: var(--color-dark-100);
-  }
-}
 
-
+//костыль для автофилла
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -158,7 +156,7 @@ input:-webkit-autofill:active {
   border-color: var(--color-light-900);
   caret-color: var(--color-light-900);
 
-} //отвратительный костыль для автофилла
+}
 
 
 /* чистит ‘X’ для Internet Explorer */
