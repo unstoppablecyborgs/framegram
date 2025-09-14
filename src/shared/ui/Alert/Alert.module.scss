@@ -1,16 +1,25 @@
-.alert {
+.container {
+  width: 1200px;
   position: relative;
-
-  display: flex;
-  gap: 24px;
-  align-items: center;
+  height: 100vh;
+}
+.alert {
+  flex: 1;
+  position: absolute;
+  bottom: 60px;
+  left: 20px;
+  display: inline-flex;
+  align-items: flex-start;
   justify-content: flex-start;
 
-  min-width: 386px;
-  max-width: fit-content;
+  width: 460px;
+  margin: 0 auto;
   min-height: 48px;
+
   padding: 12px 24px;
-  border-radius: 4px;
+  border-radius: 8px;
+
+  font-size: 14px;
 
   color: var(--color-light-100);
 }
