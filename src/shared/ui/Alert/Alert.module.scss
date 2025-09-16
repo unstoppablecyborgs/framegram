@@ -1,46 +1,36 @@
-.container {
-  width: 1200px;
-  position: relative;
-  height: 100vh;
-}
-.alert {
-  flex: 1;
-  position: absolute;
-  bottom: 60px;
-  left: 20px;
-  display: inline-flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-
-  width: 460px;
-  margin: 0 auto;
-  min-height: 48px;
+.root {
+  display: flex;
+  gap: 34px;
+  align-items: center;
+  justify-content: space-between;
 
   padding: 12px 24px;
-  border-radius: 8px;
-
-  font-size: 14px;
-
-  color: var(--color-light-100);
-}
-
-.alertError {
   border: 1px solid var(--color-danger-500);
+  border-radius: 2px;
+
   background-color: var(--color-danger-900);
 }
 
-.alertSucceeded {
-  border: 1px solid var(--color-success-500);
+.success {
+  border-color: var(--color-success-500);
   background-color: var(--color-success-900);
 }
 
-.alertMessage {
-  min-width: 80px;
+.errorTitle {
+  margin-right: 6px;
+  font-weight: 700;
 }
 
-.close {
-  position: absolute;
-  top: 12px;
-  right: 24px;
-  bottom: 12px;
+.closeButton {
+  all: unset;
+  display: flex;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  > svg {
+    width: 14px;
+    height: 14px;
+  }
 }
