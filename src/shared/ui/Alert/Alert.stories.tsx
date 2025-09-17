@@ -1,33 +1,66 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { useRef, useState } from 'react'
+import { fn } from 'storybook/test'
 import { Alert } from './Alert'
 
-const meta: Meta<typeof Alert> = {
-  title: 'Shared/Alert',
+const meta = {
+  title: 'Components/Alert',
   component: Alert,
-  argTypes: {
-    variant: {
-      control: 'inline-radio',
-      options: ['error', 'succeeded'],
+  parameters: {
+    docs: {
+      description: {
+        component: 'Кастомный компонент уведомления',
+      },
     },
-    message: { control: 'text' },
-    autoHideDuration: { control: 'number' },
   },
-}
+  args: {
+    onClose: fn(),
+  },
+} satisfies Meta<typeof Alert>
 
 export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const Succeeded: Story = {
+export const Default: Story = {
   args: {
-    variant: 'succeeded',
-    message: 'Операция выполнена успешно!',
+    children: 'Server is not available',
   },
 }
 
-export const Error: Story = {
+export const Success: Story = {
   args: {
-    variant: 'error',
-    message: 'В результате выполнения произошла ошибка!',
+    variant: 'success',
+    children: 'Your settings are saved',
+  },
+}
+
+export const LikeToast: Story = {
+  render: () => {
+    const [error, setError] = useState<string | null>(null)
+    const timeoutRef = useRef<number>(null)
+
+    const handleClick = () => {
+      setError('Server is not available')
+
+      clearTimeout(timeoutRef.current!)
+      timeoutRef.current = window.setTimeout(() => {
+        setError(null)
+      }, 3000)
+    }
+
+    const handleClose = () => {
+      setError(null)
+      clearTimeout(timeoutRef.current!)
+    }
+
+    return (
+      <div>
+        <button type="button" onClick={handleClick} style={{ marginBottom: '10px' }}>
+          Set error
+        </button>
+        {error && <Alert onClose={handleClose}>{error}</Alert>}
+      </div>
+    )
   },
 }
