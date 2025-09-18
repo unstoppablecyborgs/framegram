@@ -1,0 +1,36 @@
+.root {
+  display: flex;
+  gap: 34px;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 12px 24px;
+  border: 1px solid var(--color-danger-500);
+  border-radius: 2px;
+
+  background-color: var(--color-danger-900);
+}
+
+.success {
+  border-color: var(--color-success-500);
+  background-color: var(--color-success-900);
+}
+
+.errorTitle {
+  margin-right: 6px;
+  font-weight: 700;
+}
+
+.closeButton {
+  all: unset;
+  display: flex;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  > svg {
+    width: 14px;
+    height: 14px;
+  }
+}
