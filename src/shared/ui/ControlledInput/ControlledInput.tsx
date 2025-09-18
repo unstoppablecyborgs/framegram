@@ -10,9 +10,7 @@ import styles from './ControlledInput.module.scss'
 type Props = ComponentProps<'input'> & {
   errorMessage?: string
   label?: string
-  disabled?: boolean
-  onValueChange?: (value: string) => void
-  placeholder?: string
+  onChange?: (value: string) => void
   type: string
 }
 
@@ -20,59 +18,54 @@ function ControlledInput({
   errorMessage,
   label,
   disabled,
-  onValueChange,
   placeholder,
   onChange,
   type,
+  className,
   ref,
   ...props
 }: Props) {
   const [showPassword, setShowPassword] = useState(false)
 
-  const endTypeCalc = (elementType: string, passwordVisible: boolean) => {
-    if (elementType === 'password' && passwordVisible) {
-      return 'text'
-    }
-    return elementType
-  }
-
-  const showPasswordToggle = type === 'password'
-  const showSearchIcon = type === 'search'
-
-  const endType = endTypeCalc(type, showPassword)
+  const isPasswordType = type === 'password'
+  const isSearchType = type === 'search'
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    onValueChange?.(e.target.value)
     onChange?.(e)
   }
 
   const classNames = {
     input: clsx(
       styles.input,
-      !!errorMessage && styles.error,
-      disabled && styles.disabled,
-      type === 'search' && styles.search
+      type === 'search' && styles.search,
+      type === 'password' && styles.password,
+      className
     ),
-    label: clsx(styles.label, !!errorMessage && styles.error, disabled && styles.disabled),
-    icon: clsx(styles.icon, !!errorMessage && styles.error, disabled && styles.disabled),
-    root: clsx(styles.root, !!errorMessage && styles.error, disabled && styles.disabled),
-    message: clsx(styles.errorMessage, !!errorMessage && styles.error),
-    iconButton: clsx(styles.iconButton, type === 'search' ? styles.search : styles.eyeButton),
+    label: clsx(styles.label),
+    icon: clsx(styles.icon),
+    root: clsx(styles.root),
+    message: clsx(styles.errorMessage),
+    iconButton: clsx(
+      styles.iconButton,
+      type === 'search' ? styles.search : styles.eyeButton,
+      disabled && styles.disabled
+    ),
+    divContainer: styles.divContainer,
   }
 
   return (
     <div className={classNames.root}>
       {label && <label className={classNames.label}>{label}</label>}
-      <div className={clsx(styles.divContainer)}>
+      <div className={classNames.divContainer}>
         <input
-          onChange={() => handleChange}
+          onChange={handleChange}
           className={classNames.input}
-          type={endType}
+          type={isPasswordType && showPassword ? 'text' : type}
           placeholder={placeholder}
           disabled={disabled}
           {...props}
         />
-        {showPasswordToggle && (
+        {isPasswordType && (
           <button
             type={'button'}
             onClick={() => setShowPassword(!showPassword)}
@@ -86,7 +79,7 @@ function ControlledInput({
             )}
           </button>
         )}
-        {showSearchIcon && <MagnifyingGlassIcon className={classNames.iconButton} />}
+        {isSearchType && <MagnifyingGlassIcon className={classNames.iconButton} />}
       </div>
       {!!errorMessage && <span className={classNames.message}>{errorMessage}</span>}
     </div>

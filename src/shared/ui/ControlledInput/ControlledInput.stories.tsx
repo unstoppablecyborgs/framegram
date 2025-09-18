@@ -8,7 +8,7 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: 'Управляемый инпут на базе Radix UI.',
+        component: 'Управляемый инпут на базе стандартного инпута.',
       },
     },
   },
@@ -22,7 +22,7 @@ export const PasswordError: Story = {
     errorMessage: 'wrong password',
     label: 'Password',
     placeholder: 'password1234',
-    type: "'password'",
+    type: 'password',
   },
 }
 
@@ -31,25 +31,31 @@ export const EmailDisabled: Story = {
     disabled: true,
     label: 'Email',
     placeholder: 'password1234',
-    type: "'email'",
+    type: 'email',
   },
 }
 
 export const DefaultSearch: Story = {
   args: {
-    type: "'search'",
+    type: 'search',
   },
 }
 
-export const DefaultEmail: Story = {
-  render: () => {
+export const Default: Story = {
+  args: {
+    type: 'email',
+    label: 'Email',
+    placeholder: 'youremail@email.com',
+    disabled: false,
+  },
+  render: args => {
     return (
       <div>
         <ControlledInput
-          type={'password'}
-          label={'Email'}
-          placeholder={'youremail@email.com'}
-          disabled={false}
+          type={args.type}
+          label={args.label}
+          placeholder={args.placeholder}
+          disabled={args.disabled}
         />
       </div>
     )

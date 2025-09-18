@@ -1,11 +1,9 @@
 .root {
-  width: 260px;
-  margin: 50px 120px;
+  width: 100%;
 }
 
 .label {
   font-size: 14px;
-  font-weight: 400;
   line-height: 1.71429;
   color: var(--color-light-900);
 
@@ -19,7 +17,6 @@
 }
 
 .errorMessage {
-  font-weight: 400;
   font-size: 14px;
   line-height: 1.71429;
   color: var(--color-danger-500);
@@ -36,8 +33,6 @@
   align-items: center;
   justify-content: center;
 
-  font-size: 16px;
-  font-weight: 400;
   line-height: 1;
 
   border-radius: 2px;
@@ -80,6 +75,9 @@
   &.search {
     padding-left: 40px;
   }
+  &.password {
+    padding-right: 50px;
+  }
 
   &::placeholder {
     color: var(--color-light-900);
@@ -103,9 +101,9 @@
   position: absolute;
   transform: translateY(-50%);
 
-  width: 34px;
-  height: 34px;
-  margin-right: 12px;
+  width: 24px;
+  height: 24px;
+  right: 12px;
   padding: 0;
 
   background: transparent;
@@ -118,24 +116,29 @@
 
   &.disabled {
     color: var(--color-dark-100);
-    box-shadow: 0 0 0 1px var(--color-dark-100);
     cursor: not-allowed;
+    &.search{
+      fill: var(--color-dark-100);
+    }
+
+    &.eyeButton{
+      svg {
+        fill: var(--color-dark-100)
+      }
+    }
   }
 
   &.search{
-    top: 18px;
-    left: 0;
-    bottom: 50%;
+    top: 50%;
+    left: 12px;
 
     height: 20px;
     width: 20px;
-    margin: 0 9px 0 12px;
   }
 
   &.eyeButton{
-    top: 21px;
-    right: 0;
-    bottom: 50%;
+    top: 50%;
+    right: 12px;
 
     svg {
       height: 24px;
@@ -155,7 +158,6 @@ input:-webkit-autofill:active {
   background: transparent; //костыль №2
   border-color: var(--color-light-900);
   caret-color: var(--color-light-900);
-
 }
 
 
