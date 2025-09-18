@@ -34,32 +34,30 @@ function ControlledInput({
     onChange?.(e)
   }
 
-  const classNames = {
-    input: clsx(
-      styles.input,
-      type === 'search' && styles.search,
-      type === 'password' && styles.password,
-      className
-    ),
-    label: clsx(styles.label),
-    icon: clsx(styles.icon),
-    root: clsx(styles.root),
-    message: clsx(styles.errorMessage),
-    iconButton: clsx(
-      styles.iconButton,
-      type === 'search' ? styles.search : styles.eyeButton,
-      disabled && styles.disabled
-    ),
-    divContainer: styles.divContainer,
-  }
-
   return (
-    <div className={classNames.root}>
-      {label && <label className={classNames.label}>{label}</label>}
-      <div className={classNames.divContainer}>
+    <div className={clsx(styles.root, disabled && styles.disabled, !!errorMessage && styles.error)}>
+      {label && (
+        <label
+          className={clsx(
+            styles.label,
+            disabled && styles.disabled,
+            !!errorMessage && styles.error
+          )}
+        >
+          {label}
+        </label>
+      )}
+      <div className={styles.divContainer}>
         <input
           onChange={handleChange}
-          className={classNames.input}
+          className={clsx(
+            styles.input,
+            type === 'search' && styles.search,
+            type === 'password' && styles.password,
+            disabled && styles.disabled,
+            !!errorMessage && styles.error,
+            className
+          )}
           type={isPasswordType && showPassword ? 'text' : type}
           placeholder={placeholder}
           disabled={disabled}
@@ -69,19 +67,23 @@ function ControlledInput({
           <button
             type={'button'}
             onClick={() => setShowPassword(!showPassword)}
-            className={classNames.iconButton}
+            className={clsx(styles.iconButton, styles.eyeButton, disabled && styles.disabled)}
             disabled={disabled}
           >
             {showPassword ? (
-              <EyeOpenIcon className={classNames.icon} />
+              <EyeOpenIcon className={clsx(styles.icon)} />
             ) : (
-              <EyeClosedIcon className={classNames.icon} />
+              <EyeClosedIcon className={clsx(styles.icon)} />
             )}
           </button>
         )}
-        {isSearchType && <MagnifyingGlassIcon className={classNames.iconButton} />}
+        {isSearchType && (
+          <MagnifyingGlassIcon
+            className={clsx(styles.iconButton, styles.search, disabled && styles.disabled)}
+          />
+        )}
       </div>
-      {!!errorMessage && <span className={classNames.message}>{errorMessage}</span>}
+      {!!errorMessage && <span className={clsx(styles.errorMessage)}>{errorMessage}</span>}
     </div>
   )
 }
