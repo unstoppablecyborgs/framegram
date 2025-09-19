@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 
 import '../styles'
+import RootProvider from '../providers'
 
 const inter = localFont({
   src: '../../../public/fonts/inter/Inter-VariableFont_opsz,wght.ttf',
@@ -21,8 +22,10 @@ export function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <RootProvider>
+      <html lang="en">
+        <body className={inter.className}>{children}</body>
+      </html>
+    </RootProvider>
   )
 }
