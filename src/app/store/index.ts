@@ -1,9 +1,11 @@
 import type { Action, ThunkAction } from '@reduxjs/toolkit'
 import { combineSlices, configureStore } from '@reduxjs/toolkit'
+import { baseApi } from '@/shared/api'
+import { authSlice } from '@/shared/auth'
 
 // `combineSlices` automatically combines the reducers using
 // their `reducerPath`s, therefore we no longer need to call `combineReducers`.
-const rootReducer = combineSlices()
+const rootReducer = combineSlices(baseApi, authSlice)
 
 // `makeStore` encapsulates the store configuration to allow
 // creating unique store instances, which is particularly important for
@@ -15,7 +17,7 @@ export const makeStore = () => {
     // Adding the api middleware enables caching, invalidation, polling,
     // and other useful features of `rtk-query`.
     middleware: getDefaultMiddleware => {
-      return getDefaultMiddleware().concat()
+      return getDefaultMiddleware().concat(baseApi.middleware)
     },
   })
 }
