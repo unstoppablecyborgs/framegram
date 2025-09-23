@@ -2,11 +2,12 @@ import type { BaseQueryFn, FetchArgs, FetchBaseQueryError } from '@reduxjs/toolk
 import { fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { Mutex } from 'async-mutex'
 import { loggedOut, tokenReceived } from '../auth'
+import { ENV } from '../config'
 
 // create a new mutex
 const mutex = new Mutex()
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'https://framehub.uk/api/v1/',
+  baseUrl: ENV.NEXT_PUBLIC_BASE_API_URL,
   credentials: 'include',
   prepareHeaders: (headers, { getState }) => {
     // By default, if we have a token in the store, let's use that for authenticated requests
