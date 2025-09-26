@@ -15,7 +15,13 @@ const options: OptionType[] = [
   { id: 2, title: 'Russian', flag: Russia },
 ]
 
-export const Select = () => {
+type Props = {
+  isLoggedIn: boolean
+}
+
+export const Select = (props: Props) => {
+  const { isLoggedIn } = props
+
   const [showMenu, setShowMenu] = useState(false)
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   const [selectedValue, setSelectedValue] = useState<any>(options[0])
@@ -37,7 +43,7 @@ export const Select = () => {
   const selectedItem = options.find(option => option.id === selectedValue.id)
 
   return (
-    <div className={styles.selectWrapper}>
+    <div className={isLoggedIn ? styles.selectWrapperIsLoggedIn : styles.selectWrapper}>
       <div
         className={styles.select}
         onChange={(event: ChangeEvent<HTMLDivElement | undefined>) =>
