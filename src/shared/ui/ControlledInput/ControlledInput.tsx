@@ -1,7 +1,7 @@
 'use client'
 import clsx from 'clsx'
 import * as React from 'react'
-import { ChangeEvent, ComponentProps, useState } from 'react'
+import { ComponentProps, useState } from 'react'
 
 import { EyeClosedIcon, EyeOpenIcon, MagnifyingGlassIcon } from '@/shared/assets'
 
@@ -10,7 +10,6 @@ import styles from './ControlledInput.module.scss'
 type Props = ComponentProps<'input'> & {
   errorMessage?: string
   label?: string
-  onChange?: (value: string) => void
   type: string
 }
 
@@ -18,7 +17,6 @@ function ControlledInput({
   errorMessage,
   label,
   disabled,
-  placeholder,
   onChange,
   type,
   className,
@@ -29,10 +27,6 @@ function ControlledInput({
 
   const isPasswordType = type === 'password'
   const isSearchType = type === 'search'
-
-  function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    onChange?.(e)
-  }
 
   return (
     <div className={clsx(styles.root, disabled && styles.disabled, !!errorMessage && styles.error)}>
@@ -49,7 +43,6 @@ function ControlledInput({
       )}
       <div className={styles.divContainer}>
         <input
-          onChange={handleChange}
           className={clsx(
             styles.input,
             type === 'search' && styles.search,
@@ -59,7 +52,6 @@ function ControlledInput({
             className
           )}
           type={isPasswordType && showPassword ? 'text' : type}
-          placeholder={placeholder}
           disabled={disabled}
           {...props}
         />
@@ -71,9 +63,9 @@ function ControlledInput({
             disabled={disabled}
           >
             {showPassword ? (
-              <EyeOpenIcon className={clsx(styles.icon)} />
+              <EyeOpenIcon className={styles.icon} />
             ) : (
-              <EyeClosedIcon className={clsx(styles.icon)} />
+              <EyeClosedIcon className={styles.icon} />
             )}
           </button>
         )}
@@ -83,7 +75,7 @@ function ControlledInput({
           />
         )}
       </div>
-      {!!errorMessage && <span className={clsx(styles.errorMessage)}>{errorMessage}</span>}
+      {!!errorMessage && <span className={styles.errorMessage}>{errorMessage}</span>}
     </div>
   )
 }
