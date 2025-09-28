@@ -6,3 +6,4 @@ export {
   selectUser,
   tokenReceived,
 } from './authSlice'
+export { emailSchema } from './schemas/emailSchema'
