@@ -7,3 +7,4 @@ export {
   tokenReceived,
 } from './authSlice'
 export { emailSchema } from './schemas/emailSchema'
+export { passwordSchema } from './schemas/passwordSchema'
