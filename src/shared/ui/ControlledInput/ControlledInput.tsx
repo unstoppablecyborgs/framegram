@@ -10,19 +10,9 @@ import styles from './ControlledInput.module.scss'
 type Props = ComponentProps<'input'> & {
   errorMessage?: string
   label?: string
-  type: string
 }
 
-function ControlledInput({
-  errorMessage,
-  label,
-  disabled,
-  onChange,
-  type,
-  className,
-  ref,
-  ...props
-}: Props) {
+function ControlledInput({ errorMessage, label, disabled, type, className, ...props }: Props) {
   const [showPassword, setShowPassword] = useState(false)
 
   const isPasswordType = type === 'password'

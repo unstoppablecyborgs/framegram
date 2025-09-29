@@ -23,6 +23,7 @@
 }
 
 .input {
+
   all: unset;
   box-sizing: border-box;
 
@@ -36,7 +37,7 @@
   line-height: 1;
 
   border-radius: 2px;
-  color: var(--color-light-900);
+  color: var(--color-light-100);
   box-shadow: 0 0 0 1px var(--color-dark-100);
 
   &:hover {
@@ -83,10 +84,6 @@
     color: var(--color-light-900);
   }
 
-  &::selection {
-    background-color: var(--color-dark-500);
-    color: var(--color-light-100);
-  }
 }
 
 .divContainer {
