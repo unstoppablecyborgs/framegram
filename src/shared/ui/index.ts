@@ -1,4 +1,6 @@
 export { Alert } from './Alert'
+export { Button } from './Button'
 export { Checkbox } from './Checkbox'
+export { ControlledInput } from './ControlledInput'
 export { Textarea } from './Textarea'
 export { Typography } from './Typography'
