@@ -1,0 +1,61 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 6px;
+  align-items: center;
+
+  max-width: 378px;
+  padding: 24px;
+  border: 1px solid var(--color-dark-300);
+  border-radius: 2px;
+
+  background-color: var(--color-dark-500);
+}
+
+.title {
+  margin-bottom: 6px;
+}
+
+.input {
+  align-self: stretch;
+  margin-bottom: 18px;
+}
+
+.confirmPasswordInput {
+  align-self: stretch;
+  margin-bottom: 6px;
+}
+
+.termsInput {
+  margin-bottom: 6px;
+}
+
+.terms {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+
+  label {
+    font-size: 12px;
+    line-height: 1.33;
+
+    a {
+      color: var(--color-primary-300);
+    }
+  }
+}
+
+.termsError {
+  align-self: flex-start;
+  font-size: 14px;
+  line-height: 1.71;
+  color: var(--color-danger-500);
+}
+
+.signupButton {
+  margin-bottom: 12px;
+}
+
+.signinLink {
+  text-decoration: none;
+}

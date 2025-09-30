@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { Button, Checkbox, ControlledInput } from '@/shared/ui'
 import { SignupFormFields, signupSchema } from '../model/signupSchema'
+import styles from './SignupForm.module.scss'
 
 export const SignupForm = () => {
   const {
@@ -25,14 +26,15 @@ export const SignupForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <h3>Sign Up</h3>
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+      <h3 className={styles.title}>Sign Up</h3>
       <ControlledInput
         type="text"
         placeholder="Epam11"
         label={'Username'}
         errorMessage={errors.username?.message}
         {...register('username')}
+        className={styles.input}
       />
       <ControlledInput
         type="email"
@@ -40,37 +42,55 @@ export const SignupForm = () => {
         label={'Email'}
         errorMessage={errors.email?.message}
         {...register('email')}
+        className={styles.input}
       />
-      <ControlledInput
-        type="password"
-        placeholder="******************"
-        label={'Password'}
-        errorMessage={errors.password?.message}
-        {...register('password')}
-      />
-      <ControlledInput
-        type="password"
-        placeholder="******************"
-        label={'Password confirmation'}
-        errorMessage={errors.confirmPassword?.message}
-        {...register('confirmPassword')}
-      />
-      <div>
-        <Controller
-          name="acceptTerms"
-          control={control}
-          render={({ field: { value, onChange, ...restField } }) => (
-            <Checkbox checked={value} onCheckedChange={onChange} {...restField} />
-          )}
+      <div className={styles.input}>
+        <ControlledInput
+          type="password"
+          placeholder="******************"
+          label={'Password'}
+          errorMessage={errors.password?.message}
+          {...register('password')}
         />
-        <label htmlFor="terms">
-          I agree to the <Link href={'/'}>Terms of Service</Link> and{' '}
-          <Link href={'/'}>Privacy Policy</Link>
-        </label>
       </div>
-      {errors.acceptTerms && <div>{errors.acceptTerms.message}</div>}
-      <Button type="submit" disabled={isSubmitting || !isValid}>
+      <div className={styles.confirmPasswordInput}>
+        <ControlledInput
+          type="password"
+          placeholder="******************"
+          label={'Password confirmation'}
+          errorMessage={errors.confirmPassword?.message}
+          {...register('confirmPassword')}
+        />
+      </div>
+      <div className={styles.termsInput}>
+        <div className={styles.terms}>
+          <Controller
+            name="acceptTerms"
+            control={control}
+            render={({ field: { value, onChange, ...restField } }) => (
+              <Checkbox id="terms" checked={value} onCheckedChange={onChange} {...restField} />
+            )}
+          />
+          <label htmlFor="terms">
+            I agree to the <Link href={'https://doka.guide'}>Terms of Service</Link> and{' '}
+            <Link href={'/'}>Privacy Policy</Link>
+          </label>
+        </div>
+        {errors.acceptTerms && (
+          <span className={styles.termsError}>{errors.acceptTerms.message}</span>
+        )}
+      </div>
+      <Button
+        type="submit"
+        fullWidth={true}
+        disabled={isSubmitting || !isValid}
+        className={styles.signupButton}
+      >
         Sign Up
+      </Button>
+      <p>Do you have an account?</p>
+      <Button variant="textButton" fullWidth={true} asChild={true} className={styles.signinLink}>
+        <Link href={'/'}>Sign In</Link>
       </Button>
     </form>
   )
