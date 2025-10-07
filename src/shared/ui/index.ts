@@ -1,4 +1,5 @@
 export { Alert } from './Alert'
+export { AuthSharedPage } from './AuthSharedPage'
 export { Button } from './Button'
 export { Checkbox } from './Checkbox'
 export { ControlledInput } from './ControlledInput'
