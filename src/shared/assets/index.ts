@@ -1,3 +1,4 @@
+export { default as ArrowBackIcon } from './svg/common/arrow-back.svg'
 export { default as CloseIcon } from './svg/common/close.svg'
 export { default as CheckIcon } from './svg/outline/checkmark-outline.svg'
 export { default as EyeClosedIcon } from './svg/outline/eye-off-outline.svg'
