@@ -72,8 +72,8 @@ export const SignupForm = () => {
             )}
           />
           <label htmlFor="terms">
-            I agree to the <Link href={'https://doka.guide'}>Terms of Service</Link> and{' '}
-            <Link href={'/'}>Privacy Policy</Link>
+            I agree to the <Link href={'/auth/terms-of-service'}>Terms of Service</Link> and{' '}
+            <Link href={'/auth/privacy-policy'}>Privacy Policy</Link>
           </label>
         </div>
         {errors.acceptTerms && (
