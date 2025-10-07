@@ -1,10 +1,23 @@
-@use 'reset';
+@use 'normalize';
 @use 'colors';
 @use 'typography';
-@use 'sizes';
+@use 'variables';
 
 body {
   font-family: Inter, system-ui, sans-serif;
   color: var(--color-light-100);
   background-color: var(--color-dark-700);
+}
+
+a,
+input,
+label,
+button {
+  transition-duration: var(--transition-duration);
+}
+
+.container {
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-x);
 }
