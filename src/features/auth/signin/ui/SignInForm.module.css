@@ -1,0 +1,52 @@
+.signInForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 378px;
+  min-height: 504px;
+  margin: 35px auto 0;
+  padding: 23px;
+  border: 1px solid var(--color-dark-100);
+
+  background-color: var(--color-dark-500);
+
+  h1 {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    line-height: var(--line-height-l);
+  }
+}
+
+.icons {
+  display: flex;
+  gap: 60px;
+  margin: 13px 0 24px;
+}
+
+.icon {
+  width: 36px;
+  height: 36px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.forgotPasswordLink {
+  margin-top: 12px;
+  margin-left: auto;
+
+  font-size: var(--font-size-s);
+  font-weight: 400;
+  line-height: var(--line-height-m);
+  color: var(--color-light-900);
+  text-decoration: none;
+}
+
+.account {
+  margin: 18px 0 6px;
+}
