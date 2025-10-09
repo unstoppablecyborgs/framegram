@@ -1,4 +1,6 @@
 export { default as CloseIcon } from './svg/common/close.svg'
+export { default as GithubIcon } from './svg/common/github.svg'
+export { default as GoogleIcon } from './svg/common/google.svg'
 export { default as CheckIcon } from './svg/outline/checkmark-outline.svg'
 export { default as EyeClosedIcon } from './svg/outline/eye-off-outline.svg'
 export { default as EyeOpenIcon } from './svg/outline/eye-outline.svg'
