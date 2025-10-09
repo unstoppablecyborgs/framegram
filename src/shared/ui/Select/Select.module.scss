@@ -1,0 +1,144 @@
+.selectWrapper {
+  position: absolute;
+  width: 164px;
+  top: 10px;
+  bottom: 10px;
+  right: 324px;
+}
+
+.selectWrapperIsLoggedIn {
+  position: absolute;
+  width: 164px;
+  top: 10px;
+  bottom: 10px;
+  right: 64px;
+}
+
+.select {
+  display: flex;
+  flex-direction: column;
+  border-radius: 2px;
+  background-color: var(--color-dark-500);
+  border: 1px solid var(--color-dark-100);
+  cursor: default;
+
+  &:active {
+    border: 1px solid var(--color-light-100);
+
+    .customOption {
+      &:first-child {
+        border-top: 1px solid var(--color-light-100);
+      }
+    }
+  }
+
+}
+
+.selectTrigger {
+  display: flex;
+  align-items: center;
+  gap: 0 20px;
+  padding: 0 22px;
+  font-size: var(--font-size-m);
+  font-weight: 300;
+  font-style: normal;
+  height: 36px;
+  width: 164px;
+  color: var(--color-light-100);
+}
+
+.customOptions {
+  position: absolute;
+  display: block;
+  top: 100%;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.customOption {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 0 20px;
+  padding: 0 22px;
+  font-size: var(--font-size-m);
+  font-weight: 300;
+  line-height: 36px;
+  opacity: 1;
+
+  &:first-child {
+    border-top: 1px solid var(--color-dark-100);
+  }
+
+  &:last-child {
+    border-top: 0;
+  }
+
+  &:hover {
+    color: var(--color-primary-500);
+    background-color: var(--color-dark-300);
+  }
+
+}
+
+.open {
+  background-color: var(--color-dark-500);
+}
+
+.selected {
+  color: #ffffff;
+  background-color: var(--color-primary-500);
+}
+
+.arrow {
+  position: relative;
+  height: 8px;
+  width: 16px;
+}
+
+.arrow {
+  &::before, &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 0.15rem;
+    height: 100%;
+    transition: all 0.5s;
+  }
+}
+
+
+.arrow {
+  &::before {
+    left: 1px;
+    transform: rotate(45deg);
+    background-color: var(--color-light-100);
+  }
+}
+
+.arrow {
+  &::after {
+    background-color: var(--color-light-100);
+    left: 5px;
+    transform: rotate(-45deg);
+  }
+}
+
+.open.arrow {
+  &::before {
+    left: 1px;
+    transform: rotate(-45deg);
+  }
+}
+
+.open.arrow {
+  &::after {
+    left: 5px;
+    transform: rotate(45deg);
+  }
+}
