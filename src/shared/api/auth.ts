@@ -12,5 +12,17 @@ export const authApi = baseApi.injectEndpoints({
     me: build.query<User, void>({
       query: () => 'auth/me',
     }),
+    signup: build.mutation<
+      void,
+      { userName: string; email: string; password: string; baseUrl: string }
+    >({
+      query: params => ({
+        body: params,
+        method: 'POST',
+        url: 'auth/registration',
+      }),
+    }),
   }),
 })
+
+export const { useMeQuery, useSignupMutation } = authApi
