@@ -2,16 +2,21 @@
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
-import { Controller, SubmitHandler, useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 import { Button, Checkbox, ControlledInput } from '@/shared/ui'
 import { SignupFormFields, signupSchema } from '../model/signupSchema'
 import styles from './SignupForm.module.scss'
 
-export const SignupForm = () => {
+type Props = {
+  onSubmit: (data: SignupFormFields, reset: () => void) => void
+}
+
+export const SignupForm = ({ onSubmit }: Props) => {
   const {
     register,
     control,
     handleSubmit,
+    reset,
     formState: { errors, isValid, isSubmitting },
   } = useForm<SignupFormFields>({
     defaultValues: {
@@ -21,12 +26,8 @@ export const SignupForm = () => {
     mode: 'onBlur',
   })
 
-  const onSubmit: SubmitHandler<SignupFormFields> = data => {
-    console.log('Form data: ', data)
-  }
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+    <form onSubmit={handleSubmit(data => onSubmit(data, reset))} className={styles.form}>
       <h3 className={styles.title}>Sign Up</h3>
       <ControlledInput
         type="text"
